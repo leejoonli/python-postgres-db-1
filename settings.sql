@@ -1,0 +1,3 @@
+CREATE DATABASE python_postgres_exercise_1;
+CREATE USER python_postgres_exercise_1_user WITH PASSWORD 'python_postgres_exercise_1';
+GRANT ALL PRIVILEGES ON DATABASE python_postgres_exercise_1 TO python_postgres_exercise_1_user;
