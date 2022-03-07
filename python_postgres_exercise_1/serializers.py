@@ -15,7 +15,7 @@ class CountrySerializer(serializers.HyperlinkedModelSerializer):
         source='region'
     )
     # country = serializers.HyperlinkedRelatedField(view_name='country_detail', read_only = True)
-    # country_url = serializers.ModelSerializer.serializer_url_field(view_name='country_detail')
+    country_url = serializers.ModelSerializer.serializer_url_field(view_name='country_detail')
     class Meta:
         model = Country
-        fields = ('id', 'name', 'region', 'region_id')
+        fields = ('id', 'name', 'region', 'region_id', 'country_url')
