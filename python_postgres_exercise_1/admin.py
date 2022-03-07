@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Region, Country, Locations
+from .models import Region, Country, Location
 
 # Register your models here.
 admin.site.register(Region)
 admin.site.register(Country)
-admin.site.register(Locations)
+admin.site.register(Location)

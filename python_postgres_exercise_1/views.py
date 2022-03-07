@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import RegionSerializer, CountrySerializer
-from .models import Region, Country
+from .serializers import RegionSerializer, CountrySerializer, LocationSerializer
+from .models import Region, Country, Location
 
 # Create your views here.
 class RegionList(generics.ListCreateAPIView):
@@ -19,3 +19,11 @@ class CountryList(generics.ListCreateAPIView):
 class CountryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+
+class LocationList(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+
+class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
