@@ -37,6 +37,9 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
         queryset=Location.objects.all(),
         source='location'
     )
+    department_url = serializers.ModelSerializer.serializer_url_field(view_name='department_detail')
     class Meta:
         model = Department
-        fields = ('id', 'name', 'manager_id', 'location', 'location_id')
+        fields = ('id', 'name', 'manager_id', 'location', 'location_id', 'department_url')
+
+# class JobSerializer(serializers.Hy)
