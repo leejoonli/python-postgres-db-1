@@ -10,4 +10,6 @@ urlpatterns = [
     path('locations/<int:pk>', views.LocationDetail.as_view(), name='location_detail'),
     path('departments/', views.DepartmentList.as_view(), name='departments_list'),
     path('departments/<int:pk>', views.DepartmentDetail.as_view(), name='departments_detail'),
+    path('jobs/', views.JobList.as_view(), name='jobs_list'),
+    path('jobs/<int:pk>', views.JobDetail.as_view(), name='jobs_detail'),
 ]
