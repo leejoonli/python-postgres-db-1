@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Region, Country, Location
+from .models import Region, Country, Location, Department
 
 class RegionSerializer(serializers.HyperlinkedModelSerializer):
     region = serializers.HyperlinkedRelatedField(view_name='region_detail', read_only=True)
@@ -30,3 +30,13 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Location
         fields = ('id', 'street_address', 'postal_code', 'city', 'state_province', 'country', 'country_id', 'location_url')
+
+class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
+    location = serializers.HyperlinkedRelatedField(view_name='location_detail', read_only=True)
+    location_id = serializers.PrimaryKeyRelatedField(
+        queryset=Location.objects.all(),
+        source='location'
+    )
+    class Meta:
+        model = Department
+        fields = ('id', 'name', 'manager_id', 'location', 'location_id')
