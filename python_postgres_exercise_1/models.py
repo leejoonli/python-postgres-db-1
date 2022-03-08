@@ -32,3 +32,17 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=25)
+    email = models.CharField(max_length=25)
+    phone_number = models.CharField(max_length=20)
+    hire_date = models.DateField(auto_now_add=True)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='jobs')
+    salary = models.IntegerField()
+    manager_id = models.IntegerField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='employees')
+
+    def __str__(self):
+        return self.first_name
