@@ -24,3 +24,11 @@ class Location(models.Model):
 
     def __str__(self):
         return (f'{self.street_address}, {self.city}, {self.state_province} {self.postal_code}')
+
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+    manager_id = models.IntegerField()
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='departments')
+
+    def __str__(self):
+        return self.name
