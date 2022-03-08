@@ -33,6 +33,14 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
+class Job(models.Model):
+    job_title = models.CharField(max_length=35)
+    min_salary = models.IntegerField()
+    max_salary = models.IntegerField()
+
+    def __str__(self):
+        return self.job_title
+
 class Employee(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=25)
