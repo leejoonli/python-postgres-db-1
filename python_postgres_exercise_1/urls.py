@@ -12,4 +12,6 @@ urlpatterns = [
     path('departments/<int:pk>', views.DepartmentDetail.as_view(), name='departments_detail'),
     path('jobs/', views.JobList.as_view(), name='jobs_list'),
     path('jobs/<int:pk>', views.JobDetail.as_view(), name='jobs_detail'),
+    path('employees/', views.EmployeeList.as_view(), name='employees_list'),
+    path('employees/<int:pk>', views.EmployeeDetail.as_view(), name='employees_detail'),
 ]
