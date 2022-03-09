@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Region, Country, Location, Department, Job, Employee
+from .models import Region, Country, Location, Department, Job, Employee, JobHistory
 
 class RegionSerializer(serializers.HyperlinkedModelSerializer):
     region = serializers.HyperlinkedRelatedField(view_name='region_detail', read_only=True)
@@ -62,3 +62,23 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Employee
         fields = ('id', 'first_name', 'last_name', 'email', 'phone_number', 'hire_date', 'job', 'job_id', 'salary', 'manager_id', 'department', 'department_id')
+
+class JobHistorySerializer(serializers.HyperlinkedModelSerializer):
+    employee = serializers.HyperlinkedRelatedField(view_name='employee_detail', read_only=True)
+    employee_id = serializers.PrimaryKeyRelatedField(
+        queryset=Employee.objects.all(),
+        source='employee'
+    )
+    job = serializers.HyperlinkedRelatedField(view_name='job_detail', read_only=True)
+    job_id = serializers.PrimaryKeyRelatedField(
+        queryset=Job.objects.all(),
+        source='job'
+    )
+    department = serializers.HyperlinkedRelatedField(view_name='department_detail', read_only=True)
+    department_id = serializers.PrimaryKeyRelatedField(
+        queryset=Department.objects.all(),
+        source='deparment'
+    )
+    class Meta:
+        model = JobHistory
+        fields = ('id', 'employee', 'employee_id', 'start_date', 'end_date', 'job', 'job_id', 'department', 'department_id')
