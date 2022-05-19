@@ -1,0 +1,1 @@
+web: gunicorn python_postgres_exercise_1_django.wsgi
