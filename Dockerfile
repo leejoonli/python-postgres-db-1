@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r Pipfile
 
 COPY . .
 
-CMD [ "python", "./your-daemon-or-script.py" ]
+CMD [ "python", "./manage.py" ]
